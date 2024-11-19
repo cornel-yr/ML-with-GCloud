@@ -81,19 +81,21 @@ Prediksi:
     c. Jika pengguna mengirimkan gambar lebih dari 1MB (1000000 byte), API akan merespons error dengan detail seperti berikut.
     ```json
     {
-        Status Code: 413
-        Body Response:
+        "Status Code": 413,
+        "Body Response":{
            "status": "fail",
            "message": "Payload content length greater than maximum allowed: 1000000"
+        }
     }
     ```
     d. Jika prediksi mengalami error seperti format dan shape gambar yang tidak sesuai atau merujuk pada kesalahan ketika melakukan prediksi baik dari sisi model atau pun pengguna. API akan merespons error dengan detail seperti berikut
     ```json
     {
-        Status Code: 400
-        Body Response:
-           "status": "fail",
-           "message": "Terjadi kesalahan dalam melakukan prediksi"
+        "Status Code": 400,
+        "Body Response": {
+            "status": "fail",
+            "message": "Terjadi kesalahan dalam melakukan prediksi"
+        }
     }
 
 

@@ -42,12 +42,12 @@ Silakan berikan hak akses kepada reviewer_googlecloud@dicoding.com ke dalam proj
 Sebagaimana disebutkan sebelumnya, Anda perlu membuat web server yang dapat menangani inferensi model machine learning. 
 
 API yang dibuat harus memiliki detail seperti berikut.
-    Prediksi:
-    - URL Endpoint: /predict
-    - Method: POST
-    - Content-Type: multipart/form-data
-    - Request body:
-        - image as file, harus berukuran maksimal 1MB (1000000 byte)
+Prediksi:
+- URL Endpoint: /predict
+- Method: POST
+- Content-Type: multipart/form-data
+- Request body:
+    - image as file, harus berukuran maksimal 1MB (1000000 byte)
 
 
     a. Jika pengguna mengirimkan gambar yang terindikasi penyakit kanker, respon API harus memiliki struktur berikut.
@@ -77,7 +77,7 @@ API yang dibuat harus memiliki detail seperti berikut.
        }
     }
     ```
-
+    
     c. Jika pengguna mengirimkan gambar lebih dari 1MB (1000000 byte), API akan merespons error dengan detail seperti berikut.
     ```json
     {
@@ -87,7 +87,7 @@ API yang dibuat harus memiliki detail seperti berikut.
            "message": "Payload content length greater than maximum allowed: 1000000"
     }
     ```
-    d. Jika prediksi mengalami error seperti format dan shape gambar yang tidak sesuai atau merujuk pada kesalahan ketika melakukan prediksi baik dari sisi model atau pun pengguna. API akan merespons error dengan detail seperti berikut.
+    d. Jika prediksi mengalami error seperti format dan shape gambar yang tidak sesuai atau merujuk pada kesalahan ketika melakukan prediksi baik dari sisi model atau pun pengguna. API akan merespons error dengan detail seperti berikut
     ```json
     {
         Status Code: 400
@@ -143,34 +143,34 @@ Dalam memberikan hak akses ke auditor eksternal, Anda harus menerapkan principle
 Melakukan deployment aplikasi backend menggunakan layanan Cloud Run.
 Perlu diingat, jika Anda menerapkan saran ini, kriteria utama poin 3 tentang deployment Compute Engine dan poin 7 tentang penggunaan static IP akan otomatis terpenuhi. Sehingga Anda tidak perlu mengerjakannya.
 Menambahkan endpoint baru yang bertujuan sebagai riwayat prediksi dengan cara mengambil seluruh data yang telah Anda simpan di Firestore.  Berikut detail ketentuannya.
-    Method: GET
-    Path: /predict/histories
-    Response body yang harus ditampilkan adalah sebagai berikut.
-    ```json
-    {
-       "status": "success",
-       "data": [
-           {
-               "id": "13e907b3-4213-42ad-b12b-b9b7e12eb90e",
-               "history": {
-                   "result": "Cancer",
-                   "createdAt": "2023-12-22T10:04:40.341Z",
-                   "suggestion": "Segera periksa ke dokter!",
-                   "id": "13e907b3-4213-42ad-b12b-b9b7e12eb90e"
+    - Method: GET
+    - Path: /predict/histories
+    - Response body yang harus ditampilkan adalah sebagai berikut.
+        ```json
+        {
+           "status": "success",
+           "data": [
+               {
+                   "id": "13e907b3-4213-42ad-b12b-b9b7e12eb90e",
+                   "history": {
+                       "result": "Cancer",
+                       "createdAt": "2023-12-22T10:04:40.341Z",
+                       "suggestion": "Segera periksa ke dokter!",
+                       "id": "13e907b3-4213-42ad-b12b-b9b7e12eb90e"
+                   }
+               },
+               {
+                   "id": "19555e44-9cc7-4bc4-98b9-732d69cac082",
+                   "history": {
+                       "result": "Non-cancer",
+                       "createdAt": "2023-12-22T10:06:50.783Z",
+                       "suggestion": "Anda sehat!",
+                       "id": "19555e44-9cc7-4bc4-98b9-732d69cac082"
+                   }
                }
-           },
-           {
-               "id": "19555e44-9cc7-4bc4-98b9-732d69cac082",
-               "history": {
-                   "result": "Non-cancer",
-                   "createdAt": "2023-12-22T10:06:50.783Z",
-                   "suggestion": "Anda sehat!",
-                   "id": "19555e44-9cc7-4bc4-98b9-732d69cac082"
-               }
-           }
-       ]
-    }
-    ```
+           ]
+        }
+        ```
 
 
 # Tips and Trik

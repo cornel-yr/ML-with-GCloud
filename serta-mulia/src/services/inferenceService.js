@@ -14,7 +14,9 @@ async function predictClassification(model, image) {
         const prediction = model.predict(tensor);
         const score = await prediction.data();
         const confidenceScore = Math.max(...score) * 100;
- 
+        
+        // tf.argMax(prediction, 1) mengembalikan indeks dari nilai maksimum di sepanjang axis 1 dari tensor prediksi.
+        // Dalam contoh ini, nilai maksimum adalah 0.7 pada indeks 1.
         const classResult = tf.argMax(prediction, 1).dataSync()[0];
         const label = classes[classResult];
  

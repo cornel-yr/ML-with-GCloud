@@ -217,3 +217,8 @@ Berkas submission yang dikirimkan merupakan folder yang berisi kumpulan berkas y
 - Ketentuan berkas submission tidak terpenuhi.
 - Berkas yang diminta tidak bisa dibuka, error, atau isinya benar-benar berantakan.
 - Melakukan kecurangan seperti tindakan plagiarisme.
+
+
+
+# Clear
+21 November 2024 
